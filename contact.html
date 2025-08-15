@@ -110,9 +110,9 @@
       <aside class="info-card">
         <h3 style="margin:0 0 8px;">Reach us directly</h3>
         <div class="info-item"><span>📧</span><div><strong>Email</strong>ledlutece@gmail.com</div></div>
-        <div class="info-item"><span>📞</span><div><strong>Phone</strong>+971 50 XXX XXXX</div></div>
+        <div class="info-item"><span>📞</span><div><strong>Phone</strong>+971 50 207 475X</div></div>
         <div class="info-item"><span>📍</span><div><strong>Location</strong>Dubai, UAE</div></div>
-        <div class="info-item"><span>🕘</span><div><strong>Hours</strong>Mon–Fri, 9:00–18:00</div></div>
+        <div class="info-item"><span>🕘</span><div><strong>Hours</strong>Sun–Thu, 9:00–18:00</div></div>
         <div class="info-item"><span>🟢</span><div><strong>WhatsApp</strong><a href="https://wa.me/97150207475X" target="_blank" rel="noopener">Chat now</a></div></div>
       </aside>
     </div>
@@ -146,6 +146,7 @@
       toggle?.setAttribute('aria-expanded','false');
     });
   });
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/REPLACE_WITH_YOUR_FORMSPREE_ID';
   const onScroll = () => {
     if(window.scrollY > 8){ header?.classList.add('scrolled'); }
     else { header?.classList.remove('scrolled'); }
@@ -166,27 +167,32 @@
     statusEl.classList.remove('hidden');
     statusEl.textContent = 'Sending…';
 
-    // Basic client-side validation
     if(!form.checkValidity()){
       statusEl.textContent = 'Please fill the required fields.';
       return;
     }
-    // Honeypot check
     if(form.website && form.website.value){ return; }
 
     try{
       const fd = new FormData(form);
-      const res = await fetch('contact.php', { method:'POST', body: fd });
-      const data = await res.json();
-      if(data && data.ok){
+      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', { method:'POST', body: fd,
+      headers: { 'Accept': 'application/json' } });
+      let data = null;
+      try { data = await res.json(); } catch(e){ /* not JSON */ }
+      if(res.ok && data && data.ok){
         statusEl.textContent = 'Sent successfully.';
         form.reset();
         modal.classList.add('show');
-      }else{
-        statusEl.textContent = data && data.error ? data.error : 'Failed to send. Please try again.';
+      } else {
+        const msg = (data && data.error) ? data.error
+                  : (!res.ok ? ('Server responded with ' + res.status + ' ' + res.statusText)
+                  : 'Unexpected response. Check that PHP is enabled.');
+        statusEl.textContent = msg;
+        console.error('Contact form error:', {status: res.status, statusText: res.statusText, data});
       }
     }catch(err){
-      statusEl.textContent = 'Network error. Please try again.';
+      statusEl.textContent = 'Network error. Please check your internet connection and that the Formspree endpoint is reachable.';
+      console.error(err);
     }
   });
 </script>
