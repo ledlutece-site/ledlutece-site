@@ -2,21 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Led Lutece | Products</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   
-<header>
-  <div class="logo"><a href="index.html">Led Lutece</a></div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="products.html">Products</a>
-    <a href="projects.html">Projects</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+<header class="site-header">
+  <div class="nav-wrap">
+
+    <div class="logo">
+      <a href="index.html">
+       <img src="Logo.png" alt="Led Lutece Logo" style="height:48px;">
+       </a>
+    </div>
+
+    <!-- Hamburger (mobile) -->
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav" role="navigation">
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="projects.html">Projects</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
 </header>
+
 
   <main>
     <h1>Our Product Categories</h1>
@@ -880,5 +895,31 @@
       });
     }
   </script>
+
+<script>
+  // Mobile nav toggle
+  const header = document.querySelector('.site-header');
+  const toggle = document.querySelector('.nav-toggle');
+  toggle?.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    document.body.classList.toggle('nav-open');
+  });
+  // Close menu when a link is clicked (mobile)
+  document.querySelectorAll('.nav a').forEach(a=>{
+    a.addEventListener('click', ()=> {
+      document.body.classList.remove('nav-open');
+      toggle?.setAttribute('aria-expanded','false');
+    });
+  });
+  // Add shadow on scroll
+  const onScroll = () => {
+    if(window.scrollY > 8){ header?.classList.add('scrolled'); }
+    else { header?.classList.remove('scrolled'); }
+  };
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+</script>
+
 </body>
 </html>
