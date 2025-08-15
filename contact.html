@@ -146,7 +146,7 @@
       toggle?.setAttribute('aria-expanded','false');
     });
   });
-  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/REPLACE_WITH_YOUR_FORMSPREE_ID';
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xrbldrjk';
   const onScroll = () => {
     if(window.scrollY > 8){ header?.classList.add('scrolled'); }
     else { header?.classList.remove('scrolled'); }
@@ -175,7 +175,7 @@
 
     try{
       const fd = new FormData(form);
-      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', { method:'POST', body: fd,
+      const res = await fetch('https://formspree.io/f/xrbldrjk', { method:'POST', body: fd,
       headers: { 'Accept': 'application/json' } });
       let data = null;
       try { data = await res.json(); } catch(e){ /* not JSON */ }
