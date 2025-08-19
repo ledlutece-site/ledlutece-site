@@ -5,8 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Led Lutece | Products</title>
   <link rel="stylesheet" href="style.css">
+<style>.hidden{display:none !important}</style>
 </head>
 <body>
+  <div style="max-width:1200px;margin:1rem auto;display:flex;gap:.5rem;align-items:center;">
+    <button id="show-all-categories" style="padding:.5rem 1rem;cursor:pointer;">Show all products</button>
+    <span id="active-filter" style="opacity:.7;"></span>
+  </div>
   
 <header class="site-header">
   <div class="nav-wrap">
@@ -37,7 +42,7 @@
     <h1>Our Product Categories</h1>
     <input type="text" id="searchBox" placeholder="Search category..." onkeyup="filterCategories()" style="margin-bottom: 30px; padding: 10px; width: 100%; max-width: 400px;">
     
-    <section class="category">
+    <section class="category" id="Downlights">
       <h2>Downlights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('D-01')">
@@ -62,7 +67,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Spotlights">
       <h2>Spotlights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('S-01')">
@@ -87,7 +92,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Track-Lights">
       <h2>Track Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('TL-01')">
@@ -112,7 +117,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Ceiling-Lights">
       <h2>Ceiling Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('CL-01')">
@@ -137,7 +142,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Linear-Lights">
       <h2>Linear Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('LL-01')">
@@ -162,7 +167,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Mirror-Lights">
       <h2>Mirror Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('ML-01')">
@@ -187,7 +192,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Pendant-Lights">
       <h2>Pendant Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('PL-01')">
@@ -212,7 +217,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Panel-Lights">
       <h2>Panel Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('PL-01')">
@@ -237,7 +242,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Clean-Room-Lights">
       <h2>Clean Room Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('CRL-01')">
@@ -262,7 +267,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Strip--Neon-Flex">
       <h2>Strip & Neon Flex</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('SNF-01')">
@@ -287,7 +292,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Lamps--Tubes">
       <h2>Lamps & Tubes</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('LT-01')">
@@ -312,7 +317,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Weatherproof-Lights">
       <h2>Weatherproof Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('WL-01')">
@@ -337,7 +342,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Flood-Lights">
       <h2>Flood Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('FL-01')">
@@ -362,7 +367,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Highbay-Lights">
       <h2>Highbay Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('HL-01')">
@@ -387,7 +392,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Grow-Lights">
       <h2>Grow Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('GL-01')">
@@ -412,7 +417,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Explosion-Proof-Lights">
       <h2>Explosion Proof Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('EPL-01')">
@@ -437,7 +442,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Emergency-Lights">
       <h2>Emergency Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('EL-01')">
@@ -462,7 +467,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Canopy-Lights">
       <h2>Canopy Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('CL-01')">
@@ -487,7 +492,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Obstruction-Lights">
       <h2>Obstruction Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('OL-01')">
@@ -512,7 +517,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Bulkhead-Lights">
       <h2>Bulkhead Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('BL-01')">
@@ -537,7 +542,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Wall-Lights">
       <h2>Wall Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('WL-01')">
@@ -562,7 +567,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Wall-Top-Lights">
       <h2>Wall Top Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('WTL-01')">
@@ -587,7 +592,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Wall-Recessed-Lights">
       <h2>Wall Recessed Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('WRL-01')">
@@ -612,7 +617,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Spike-Lights">
       <h2>Spike Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('SL-01')">
@@ -637,7 +642,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Bollard-Lights">
       <h2>Bollard Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('BL-01')">
@@ -662,7 +667,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Post-Top-Lights">
       <h2>Post Top Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('PTL-01')">
@@ -687,7 +692,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Inground-Lights">
       <h2>Inground Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('IL-01')">
@@ -712,7 +717,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Underwater-Lights">
       <h2>Underwater Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('UL-01')">
@@ -737,7 +742,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Street-Lights">
       <h2>Street Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('SL-01')">
@@ -762,7 +767,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Solar-Street-Lights">
       <h2>Solar Street Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('SSL-01')">
@@ -787,7 +792,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Solar-Landscape-Lights">
       <h2>Solar Landscape Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('SLL-01')">
@@ -812,7 +817,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Search-Lights">
       <h2>Search Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('SL-01')">
@@ -837,7 +842,7 @@
         </div>
       </div>
     </section>
-    <section class="category">
+    <section class="category" id="Wall-Washer-Lights">
       <h2>Wall Washer Lights</h2>
       <div class="product-grid">
         <div class="product-card" onclick="showPopup('WWL-01')">
@@ -919,6 +924,57 @@
   };
   window.addEventListener('scroll', onScroll);
   onScroll();
+</script>
+
+
+<script>
+(function(){
+  function getParamOrHash(){
+    const params = new URLSearchParams(window.location.search);
+    const fam = params.get('family');
+    if (fam) return fam;
+    if (window.location.hash) return window.location.hash.replace('#','');
+    return null;
+  }
+  function titleCase(s){return s ? s.replace(/-/g,' ') : s;}
+  function filterToFamily(family){
+    const cats = document.querySelectorAll('section.category');
+    let found = false;
+    cats.forEach(sec => {
+      if (!family || sec.id.toLowerCase() === family.toLowerCase()){
+        sec.classList.remove('hidden');
+        if (family && sec.id.toLowerCase() === family.toLowerCase()) found = true;
+      } else {
+        sec.classList.add('hidden');
+      }
+    });
+    const note = document.getElementById('active-filter');
+    if (note){
+      note.textContent = family ? '(Showing: ' + titleCase(family) + ')' : '';
+    }
+    if (family && found){
+      const el = document.getElementById(family) || document.getElementById(family.replace(/ /g,'-'));
+      if (el) el.scrollIntoView({behavior:'instant', block:'start'});
+    }
+  }
+  const initial = getParamOrHash();
+  if (initial){ filterToFamily(initial); }
+  const btn = document.getElementById('show-all-categories');
+  if (btn){ btn.addEventListener('click', function(){ filterToFamily(null); history.replaceState({}, '', window.location.pathname); }); }
+  // Support internal clicks from page itself
+  document.addEventListener('click', function(e){
+    const a = e.target.closest('a[href^="products.html"]');
+    if (!a) return;
+    const url = new URL(a.href, window.location.href);
+    const fam = url.searchParams.get('family');
+    if (fam){
+      e.preventDefault();
+      filterToFamily(fam);
+      history.replaceState({}, '', window.location.pathname + '?family=' + encodeURIComponent(fam));
+      window.scrollTo({top: 0});
+    }
+  }, true);
+})();
 </script>
 
 </body>
